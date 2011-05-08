@@ -1,0 +1,29 @@
+v1.0 RC2
+=======
+ - Take care of the localisation support.
+
+v1.0 GA
+=======
+ - Setup a GitHub repository. Update all the URLs of the source code to point
+ to that location. Hacking / forking will be done from GitHub. The releases will
+ be managed by wordpress.org. Announce the existence of the new plug-in into the
+ old XHTML Video Embed wordpress.org page.
+
+v1.1
+====
+ - Research the possibility to add oEmbed (http://www.oembed.com/) support.
+ Since this is an anti-pattern (reliance onto an external API) this will be used
+ for the services that don't provide an URL-to-embed structure. Response caching
+ ought to be used.
+
+ - Benchmark the WP Shortcode API (http://codex.wordpress.org/Shortcode_API). If
+ it's faster than hand crafted RegExp, then XVE will follow the upstream path.
+ Currently the legacy support stays in the way as it complicates things too
+ much to have WordPress manage this critical piece of functionality. Notice: the
+ v1.0 hand crafted regex implementation is not the fastest, but the shortest for
+ the XVE needs. Some speed hacks up the sleeve are still there.
+ 
+ - Research the possibility to implement Embed.ly (http://api.embed.ly/) for
+ adding more functionality.
+ 
+ 
