@@ -4,10 +4,8 @@ v1.0 RC2
 
 v1.0 GA
 =======
- - Setup a GitHub repository. Update all the URLs of the source code to point
- to that location. Hacking / forking will be done from GitHub. The releases will
- be managed by wordpress.org. Announce the existence of the new plug-in into the
- old XHTML Video Embed wordpress.org page.
+ - Announce the existence of the new plug-in into the old XHTML Video Embed
+ wordpress.org page.
 
 v1.1
 ====
@@ -25,5 +23,4 @@ v1.1
  
  - Research the possibility to implement Embed.ly (http://api.embed.ly/) for
  adding more functionality.
- 
  
