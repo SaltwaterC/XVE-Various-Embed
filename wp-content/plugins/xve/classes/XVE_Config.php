@@ -1,7 +1,7 @@
 <?php if (defined('IN_XVE') !== TRUE) exit(255);
 /**
  * @author SaltwaterC
- * @link http://projects.saltwaterc.eu/xve-various-embed
+ * @link https://github.com/SaltwaterC/XVE-Various-Embed
  * @license GPL v3.0
  */
 final class XVE_Config {
@@ -217,10 +217,6 @@ final class XVE_Config {
 			'width'      => '448',
 			'height'     => '386',
 			'player'     => 'flowplayer',
-		),
-		
-		'globals'        => array(
-			'havelegacy' => FALSE,
 		),
 		
 	);
