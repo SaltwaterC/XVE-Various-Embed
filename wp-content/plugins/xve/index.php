@@ -24,10 +24,6 @@ if((function_exists('add_filter')) AND (function_exists('add_action')))
 	 */
 	add_filter('the_content', array('XVE_Embed', 'filter'), 1);
 	/**
-	 * Plug in the Help Panel
-	 */
-	add_filter('contextual_help', array(XVE_Admin::instance(), 'help'), 1);
-	/**
 	 * Plug in the Admin Panel
 	 */
 	add_action('admin_menu', array('XVE_Admin', 'panel'));
