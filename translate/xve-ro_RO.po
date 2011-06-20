@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: XVE Video Embed\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-20 15:15+0200\n"
+"PO-Revision-Date: 2011-06-20 15:16+0200\n"
+"Last-Translator: Ștefan-Mircea Rusu <stefan.rusu@itnt.ro>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+# @ xve
+#: ../classes/XVE_Embed.php:168
+msgid "If you can see this, then you might need a Flash Player upgrade or you need to install Flash Player if it's missing. Get <a href=\"http://get.adobe.com/flashplayer/\">Flash Player</a> from Adobe. This error may appear if the URL path to the embedded object is broken or you have connectivity issue to the embedded object. <a href=\"https://github.com/SaltwaterC/XVE-Various-Embed\">Powered BY XVE Various Embed</a>."
+msgstr "Dacă vezi acest text, atunci poate ai nevoie să instalezi Flash Player sau o actualizare la Flash Player.<a href=\"http://get.adobe.com/flashplayer/\">Flash Player</a> se poate downloada de la Adobe. Această eroare mai poate apărea dacă URL-ul către obiectul embedded este greșită sau în caz de erori de conectivitate. <a href=\"https://github.com/SaltwaterC/XVE-Various-Embed\">Oferit de către XVE Various Embed</a>."
+
+# @ xve
+#: ../classes/XVE_View.php:33
+#: ../classes/XVE_URL_Toolkit.php:107
+#: ../classes/XVE_URL_Toolkit.php:148
+#: ../classes/XVE_URL_Toolkit.php:153
+#: ../classes/XVE_URL_Toolkit.php:158
+#: ../classes/XVE_URL_Toolkit.php:223
+#: ../classes/XVE_Config.php:258
+msgid "Error:"
+msgstr "Eroare:"
+
+# @ xve
+#: ../classes/XVE_View.php:33
+msgid "invalid view."
+msgstr "view invalid."
+
+# @ xve
+#: ../classes/XVE_URL_Toolkit.php:107
+msgid "invalid domain specification into the URL."
+msgstr "domeniu invalid specificat în URL."
+
+# @ xve
+#: ../classes/XVE_URL_Toolkit.php:148
+msgid "invalid embed URL."
+msgstr "URL de embed invalid."
+
+# @ xve
+#: ../classes/XVE_URL_Toolkit.php:153
+#, php-format
+msgid "invalid type %s."
+msgstr "tip invalid %s."
+
+# @ xve
+#: ../classes/XVE_URL_Toolkit.php:158
+#, php-format
+msgid "invalid domain %s for the type %s."
+msgstr "domeniu invalid %s pentru tipul %s."
+
+# @ xve
+#: ../classes/XVE_URL_Toolkit.php:223
+msgid "Invalid domain specification into the URL."
+msgstr "domeniu invalid specificat în URL."
+
+# @ xve
+#: ../classes/XVE_Config.php:258
+#, php-format
+msgid "undefined configuration entry %s."
+msgstr "cheia de configurare %s nu este definită."
+
+# @ xve
+#: ../classes/views/dashboard.php:21
+msgid "Dashboard"
+msgstr "Panou de configurare"
+
+# @ xve
+#: ../classes/views/dashboard.php:23
+msgid "General Options"
+msgstr "Opțiuni Generale"
+
+# @ xve
+#: ../classes/views/dashboard.php:27
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+# @ xve
+#: ../classes/views/dashboard.php:43
+#: ../classes/views/specific.php:9
+msgid "Enabled"
+msgstr "Activat"
+
+# @ xve
+#: ../classes/views/dashboard.php:45
+msgid "yes / no"
+msgstr "da / nu"
+
+# @ xve
+#: ../classes/views/dashboard.php:48
+#, php-format
+msgid "Enables the %s for all supported domains."
+msgstr "Activează %s pentru toate domeniile suportate."
+
+# @ xve
+#: ../classes/views/dashboard.php:52
+msgid "Global Width"
+msgstr "Lățime Generală"
+
+# @ xve
+#: ../classes/views/dashboard.php:57
+msgid "Width"
+msgstr "Lățime"
+
+# @ xve
+#: ../classes/views/dashboard.php:57
+#: ../classes/views/dashboard.php:66
+#, php-format
+msgid "(pixels) used for all %s content. Override for each specific domain or with embeding tag attributes."
+msgstr "(pixeli) utilizați pentru toate fișierele de tip %s. Suprascrie pentru fiecare domeniu specific sau direct din atributele etichetei de embed."
+
+# @ xve
+#: ../classes/views/dashboard.php:61
+msgid "Global Height"
+msgstr "Înălțime Globală"
+
+# @ xve
+#: ../classes/views/dashboard.php:66
+msgid "Height"
+msgstr "Înălțime"
+
+# @ xve
+#: ../classes/views/dashboard.php:71
+msgid "Media Player"
+msgstr "Player Media"
+
+# @ xve
+#: ../classes/views/dashboard.php:73
+msgid "Player / Licence"
+msgstr "Player / Licență"
+
+# @ xve
+#: ../classes/views/dashboard.php:90
+msgid "Pick a Media Player for FLV embedding."
+msgstr "Alege un Player Media pentru FLV."
+
+# @ xve
+#: ../classes/views/help.php:4
+#, php-format
+msgid "<strong>Usage mode:</strong> [service-type]http://example.com/permalink[/service-type], where the service-type is one of the following: %s. The URL must point to either an external service, or to a SWF / FLV / MP4 file."
+msgstr "<strong>Mod de utilizare:</strong> [tip-serviciu]http://exemplu.ro/link-permanent[/tip-serviciu], unde tipul de serviciu este unul dintre următoarele: %s. URL-ul trebuie să ducă la un serviciu extern sau la un fișier de tip SWF / FLV / MP4."
+
+# @ xve
+#: ../classes/views/help.php:7
+msgid "<strong>Real world example:</strong> [<strong>video</strong>]http://www.youtube.com/watch?v=QUy60AGnpfE[/<strong>video</strong>]. All the video services use the video tag, all the audio services use the audio tag, etc. The support for the old-style tags (if you're an old <a href='http://wordpress.org/extend/plugins/xhtml-video-embed/' target='_blank'>XHTML Video Embed user</a>) is enabled, but it's not recommended to use the old tags. The legacy support is present just to make this plug-in to be a drop-in replacement for XHTML Video Embed."
+msgstr "<strong>Exemplu din lumea reală:</strong> [<strong>video</strong>]http://www.youtube.com/watch?v=QUy60AGnpfE[/<strong>video</strong>]. Toate servicile video folosesc eticheta video, toate servicile audio folosesc eticheta audio, etc. Suportul pentru etichetele vechi (dacă ești unul dintre utilizatorii <a href='http://wordpress.org/extend/plugins/xhtml-video-embed/' target='_blank'>XHTML Video Embed user</a>) este activat, dar nu mai este recomandată utilizarea etichetelor vechi. Suportul pentru etichetele vechi este prezent doar pentru ca acest plug-in să-l înlocuiască pe cel vechi."
+
+# @ xve
+#: ../classes/views/help.php:10
+msgid "<strong>Tag attributes:</strong> width, height, player, image. Shorthand attributes: w, h, img (for width, height, image)."
+msgstr "<strong>Atribute pentru etichete:</strong> width, height, player, image. Atribute scurte: w, h, img (pentru width, height, image)."
+
+# @ xve
+#: ../classes/views/help.php:13
+#, php-format
+msgid "<strong>Attributes example:</strong> [flv <strong>width</strong>=640 <strong>height</strong>=480 <strong>player</strong>=jwplayer <strong>image</strong>=http://example.com/path/to/file.png]http://example.com/path/to/file.flv[/flv]. Width and height are supported by all the embedding types. \"player\" is a special keyword for overriding the default media player if the type is \"flv\". The supported media players are: %s. In order to use them, you must specify these compact names for each player: %s. The \"image\" keyword provides a method for specifying a splash image for the FLV player. This syntax is the same for all the supported players. You may use single / double quotes for the attributes. width=\"640\" is valid syntax, for example. If the image path contain spaces, the input must be URL-encoded. %%20 is the URL encoding for the space char."
+msgstr "<strong>Exemple de Aribute:</strong> [flv <strong>width</strong>=640 <strong>height</strong>=480 <strong>player</strong>=jwplayer <strong>image</strong>=http://exemplu.ro/calea/catre/fisier.png]http://exemplu.ro/calea/catre/fisier.flv[/flv]. Lățimea și înălțimea sunt suportate pentru toate tipurile de embed. \"player\" este un cuvând cheie special, utilizat pentru înlocuirea player-ului media implicit, dacă tipul fișierului este \"flv\". Player-ele media suportate sunt: %s. Pentru a le utiliza, trebuie să se specifice unul dintre aceste nume scurte pentru fiecare: %s. Cuvântul cheie \"image\" oferă o metodă pentru a specifica o imagine pentru fiecare player FLV. Sintaxa este aceeași pentru toate player-ele suportate. Se pot folosi apostroafe sau ghilimele pentru atribute. Spre exemplu, width=\"640\" spre exemplu este sintaxă validă. Dacă sunt conținute spații în calea către imagine, trebuie să se folosească \"URL encoding\". %%20 este codul pentru a specifica spațiu în conținutul unui URL."
+
+#: ../classes/views/help.php:17
+#, php-format
+msgid "<strong>Supported %s services: </strong> %s"
+msgstr "<strong>Servicii %s suportate: </strong> %s"
+
+# @ xve
+#: ../classes/views/xve.js.php:3
+msgid "You may want to activate JavaScript if you want this admin UI to actually do something."
+msgstr "Pentru a putea utiliza această interfață de administrare, este nevoie a activa suportul JavaScript."
+
+# @ xve
+#: ../classes/views/specific.php:3
+#, php-format
+msgid "%s Specific Options"
+msgstr "Opțiuni Specifice %s"
+
+# @ xve
+#: ../classes/views/specific.php:8
+msgid "Domain"
+msgstr "Domeniu"
+
+# @ xve
+#: ../classes/views/specific.php:10
+msgid "Specific Width"
+msgstr "Lățime Specifică"
+
+# @ xve
+#: ../classes/views/specific.php:11
+msgid "Specific Height"
+msgstr "Înălțime specifică"
+
