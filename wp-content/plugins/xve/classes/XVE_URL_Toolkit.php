@@ -22,11 +22,11 @@ class XVE_URL_Toolkit {
 	 * @return array
 	 * 
 	 * // youtube.com //
-	 * @assert ('http://www.youtube.com/watch?v=QUy60AGnpfE', 'video') == array('domain' => 'youtube.com', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1')
-	 * @assert ('http://www.youtube.com/watch?v=QUy60AGnpfE&fmt=34', 'video') == array('domain' => 'youtube.com', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1')
+	 * @assert ('http://www.youtube.com/watch?v=QUy60AGnpfE', 'video') == array('domain' => 'youtube.com', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1&version=3&modestbranding=1')
+	 * @assert ('http://www.youtube.com/watch?v=QUy60AGnpfE&fmt=34', 'video') == array('domain' => 'youtube.com', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1&version=3&modestbranding=1')
 	 * 
 	 * // youtu.be //
-	 * @assert ('http://youtu.be/QUy60AGnpfE', 'video') == array('domain' => 'youtu.be', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1')
+	 * @assert ('http://youtu.be/QUy60AGnpfE', 'video') == array('domain' => 'youtu.be', 'url' => 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1&version=3&modestbranding=1')
 	 * 
 	 * // metacafe.com //
 	 * @assert ('http://www.metacafe.com/watch/5040838/cards_out_fight_reds/', 'video') == array('domain' => 'metacafe.com', 'url' => 'http://www.metacafe.com/fplayer/5040838/cards_out_fight_reds.swf')
@@ -56,9 +56,9 @@ class XVE_URL_Toolkit {
 	 * @assert ('http://capped.tv/playeralt.php?vid=fairlight-panic_room', 'video') == array('domain' => 'capped.tv', 'url' => 'http://capped.micksam7.com/play.swf?vid=fairlight-panic_room')
 	 * 
 	 * // trilulilu.ro //
-	 * @assert ('http://www.trilulilu.ro/SaltwaterC/54fcf02ed330bd', 'video') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/player/evideoplayer.swf?hash=54fcf02ed330bd&userid=SaltwaterC')
-	 * @assert ('http://www.trilulilu.ro/ambro/26129477a2da0c', 'audio') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/player/eaudioplayer.swf?hash=26129477a2da0c&userid=ambro')
-	 * @assert ('http://www.trilulilu.ro/SaltwaterC/1c4693d5217706', 'image') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/player/eimageplayer.swf?hash=1c4693d5217706&userid=SaltwaterC')
+	 * @assert ('http://www.trilulilu.ro/SaltwaterC/54fcf02ed330bd', 'video') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/video/SaltwaterC/54fcf02ed330bd.swf?username=SaltwaterC&hash=54fcf02ed330bd&color=0xeaeaea')
+	 * @assert ('http://www.trilulilu.ro/ambro/26129477a2da0c', 'audio') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/audio/ambro/26129477a2da0c.swf?username=ambro&hash=26129477a2da0c')
+	 * @assert ('http://www.trilulilu.ro/SaltwaterC/1c4693d5217706', 'image') == array('domain' => 'trilulilu.ro', 'url' => 'http://embed.trilulilu.ro/jpg/SaltwaterC/1c4693d5217706')
 	 * 
 	 * // 220.ro //
 	 * @assert ('http://www.220.ro/funny/All-Rocky-Movies-In-5-Seconds/Uec4da3zWk/?rel=related', 'video') == array('domain' => '220.ro', 'url' => 'http://www.220.ro/emb/Uec4da3zWk')
@@ -129,6 +129,7 @@ class XVE_URL_Toolkit {
 			'path'   => $parsed['path'].$parsed['query'].$parsed['fragment'],
 		);
 	}
+
 	
 	/**
 	 * Converts the data to an embedable URL.
@@ -140,7 +141,7 @@ class XVE_URL_Toolkit {
 	 * 
 	 * // this is useless since it's tested by self::convert_from_url() but it
 	 * will make phpUnit STFU about having untested methods //
-	 * @assert ('youtube.com', '/watch?v=QUy60AGnpfE', 'video') == 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1'
+	 * @assert ('youtube.com', '/watch?v=QUy60AGnpfE', 'video') == 'http://www.youtube.com/v/QUy60AGnpfE?fs=1&hd=1&version=3&modestbranding=1'
 	 */
 	public static function convert_from_path($domain, $path, $type)
 	{
