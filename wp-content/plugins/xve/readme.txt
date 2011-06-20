@@ -18,3 +18,9 @@ The plug-in is self documented, so there's the point where you may want to start
 1. Add the xve-various-embed directory to /wp-content/plugins.
 1. Enable it via the WordPress administration interface.
 1. Start using it :).
+
+== Changelog ==
+
+- 1.0.2 - adds support for YouTube modest branding (aka the player without the YouTube logo)
+- 1.0.1 - fixes the Trilulilu embeds as the service changed the syntax without maintaining full backward compatibility
+- 1.0 - plug-in rewrite from scratch
