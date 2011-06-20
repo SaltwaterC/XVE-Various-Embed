@@ -44,14 +44,16 @@ function wp_version_check() {
 	else
 		$mysql_version = 'N/A';
 
-	$num_blogs = 1;
-	$wp_install = home_url( '/' );
-	$multisite_enabled = 0;
-	$user_count = count_users( );
 	if ( is_multisite( ) ) {
+		$user_count = get_user_count( );
 		$num_blogs = get_blog_count( );
 		$wp_install = network_site_url( );
 		$multisite_enabled = 1;
+	} else {
+		$user_count = count_users( );
+		$multisite_enabled = 0;
+		$num_blogs = 1;
+		$wp_install = home_url( '/' );
 	}
 
 	$local_package = isset( $wp_local_package )? $wp_local_package : '';
@@ -112,7 +114,7 @@ function wp_version_check() {
  *
  * @package WordPress
  * @since 2.3.0
- * @uses $wp_version Used to notidy the WordPress version.
+ * @uses $wp_version Used to notify the WordPress version.
  *
  * @return mixed Returns null if update is unsupported. Returns false if check is too soon.
  */
@@ -197,7 +199,7 @@ function wp_update_plugins() {
  *
  * @package WordPress
  * @since 2.7.0
- * @uses $wp_version Used to notidy the WordPress version.
+ * @uses $wp_version Used to notify the WordPress version.
  *
  * @return mixed Returns null if update is unsupported. Returns false if check is too soon.
  */
@@ -211,36 +213,43 @@ function wp_update_themes( ) {
 		require_once( ABSPATH . 'wp-includes/theme.php' );
 
 	$installed_themes = get_themes( );
-	$current_theme = get_site_transient( 'update_themes' );
-	if ( ! is_object($current_theme) )
-		$current_theme = new stdClass;
+	$last_update = get_site_transient( 'update_themes' );
+	if ( ! is_object($last_update) )
+		$last_update = new stdClass;
 
-	$new_option = new stdClass;
-	$new_option->last_checked = time( );
 	$timeout = 'load-themes.php' == current_filter() ? 3600 : 43200; //Check for updated every 60 minutes if hitting the themes page, Else, check every 12 hours
-	$time_not_changed = isset( $current_theme->last_checked ) && $timeout > ( time( ) - $current_theme->last_checked );
+	$time_not_changed = isset( $last_update->last_checked ) && $timeout > ( time( ) - $last_update->last_checked );
 
 	$themes = array();
 	$checked = array();
-	$themes['current_theme'] = (array) $current_theme;
+	$exclude_fields = array('Template Files', 'Stylesheet Files', 'Status', 'Theme Root', 'Theme Root URI', 'Template Dir', 'Stylesheet Dir', 'Description', 'Tags', 'Screenshot');
+
+	// Put slug of current theme into request.
+	$themes['current_theme'] = get_option( 'stylesheet' );
+
 	foreach ( (array) $installed_themes as $theme_title => $theme ) {
 		$themes[$theme['Stylesheet']] = array();
 		$checked[$theme['Stylesheet']] = $theme['Version'];
 
-		foreach ( (array) $theme as $key => $value )
-			$themes[$theme['Stylesheet']][$key] = $value;
+		$themes[$theme['Stylesheet']]['Name'] = $theme['Name'];
+		$themes[$theme['Stylesheet']]['Version'] = $theme['Version'];
+
+		foreach ( (array) $theme as $key => $value ) {
+			if ( !in_array($key, $exclude_fields) )
+				$themes[$theme['Stylesheet']][$key] = $value;
+		}
 	}
 
 	$theme_changed = false;
 	foreach ( $checked as $slug => $v ) {
-		$new_option->checked[ $slug ] = $v;
+		$update_request->checked[ $slug ] = $v;
 
-		if ( !isset( $current_theme->checked[ $slug ] ) || strval($current_theme->checked[ $slug ]) !== strval($v) )
+		if ( !isset( $last_update->checked[ $slug ] ) || strval($last_update->checked[ $slug ]) !== strval($v) )
 			$theme_changed = true;
 	}
 
-	if ( isset ( $current_theme->response ) && is_array( $current_theme->response ) ) {
-		foreach ( $current_theme->response as $slug => $update_details ) {
+	if ( isset ( $last_update->response ) && is_array( $last_update->response ) ) {
+		foreach ( $last_update->response as $slug => $update_details ) {
 			if ( ! isset($checked[ $slug ]) ) {
 				$theme_changed = true;
 				break;
@@ -252,10 +261,8 @@ function wp_update_themes( ) {
 		return false;
 
 	// Update last_checked for current to prevent multiple blocking requests if request hangs
-	$current_theme->last_checked = time();
-	set_site_transient( 'update_themes', $current_theme );
-
-	$current_theme->template = get_option( 'template' );
+	$last_update->last_checked = time();
+	set_site_transient( 'update_themes', $last_update );
 
 	$options = array(
 		'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3),
@@ -271,13 +278,15 @@ function wp_update_themes( ) {
 	if ( 200 != $raw_response['response']['code'] )
 		return false;
 
+	$new_update = new stdClass;
+	$new_update->last_checked = time( );
 	$response = unserialize( $raw_response['body'] );
 	if ( $response ) {
-		$new_option->checked = $checked;
-		$new_option->response = $response;
+		$new_update->checked = $checked;
+		$new_update->response = $response;
 	}
 
-	set_site_transient( 'update_themes', $new_option );
+	set_site_transient( 'update_themes', $new_update );
 }
 
 function _maybe_update_core() {
@@ -327,6 +336,25 @@ function _maybe_update_themes( ) {
 	wp_update_themes();
 }
 
+/**
+ * Schedule core, theme, and plugin update checks.
+ *
+ * @since 3.1.0
+ */
+function wp_schedule_update_checks() {
+	if ( !wp_next_scheduled('wp_version_check') && !defined('WP_INSTALLING') )
+		wp_schedule_event(time(), 'twicedaily', 'wp_version_check');
+
+	if ( !wp_next_scheduled('wp_update_plugins') && !defined('WP_INSTALLING') )
+		wp_schedule_event(time(), 'twicedaily', 'wp_update_plugins');
+
+	if ( !wp_next_scheduled('wp_update_themes') && !defined('WP_INSTALLING') )
+		wp_schedule_event(time(), 'twicedaily', 'wp_update_themes');
+}
+
+if ( ! is_main_site() )
+	return;
+
 add_action( 'admin_init', '_maybe_update_core' );
 add_action( 'wp_version_check', 'wp_version_check' );
 
@@ -342,13 +370,6 @@ add_action( 'load-update-core.php', 'wp_update_themes' );
 add_action( 'admin_init', '_maybe_update_themes' );
 add_action( 'wp_update_themes', 'wp_update_themes' );
 
-if ( !wp_next_scheduled('wp_version_check') && !defined('WP_INSTALLING') )
-	wp_schedule_event(time(), 'twicedaily', 'wp_version_check');
-
-if ( !wp_next_scheduled('wp_update_plugins') && !defined('WP_INSTALLING') )
-	wp_schedule_event(time(), 'twicedaily', 'wp_update_plugins');
-
-if ( !wp_next_scheduled('wp_update_themes') && !defined('WP_INSTALLING') )
-	wp_schedule_event(time(), 'twicedaily', 'wp_update_themes');
+add_action('init', 'wp_schedule_update_checks');
 
 ?>
