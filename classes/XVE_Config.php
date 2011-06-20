@@ -6,7 +6,7 @@
  */
 final class XVE_Config {
 	
-	private $version = '1.0';
+	private $version = '1.0.1';
 	private $option  = 'XVE_Various_Embed';
 	private $domain  = 'xve';
 	
@@ -87,7 +87,7 @@ final class XVE_Config {
 		'trilulilu.ro'     => array(
 			'match'        => '^\/([a-zA-Z0-9]{3,15})\/([0-9a-f]{14})',
 			'capture'      => 2,
-			'result'       => 'http://embed.trilulilu.ro/player/evideoplayer.swf?hash=%2%&userid=%1%',
+			'result'       => 'http://embed.trilulilu.ro/video/%1%/%2%.swf?username=%1%&hash=%2%&color=0xeaeaea',
 		),
 		
 		'220.ro'           => array(
@@ -145,7 +145,7 @@ final class XVE_Config {
 		'trilulilu.ro'     => array(
 			'match'        => '^\/([a-zA-Z0-9]{3,15})\/([0-9a-f]{14})',
 			'capture'      => 2,
-			'result'       => 'http://embed.trilulilu.ro/player/eaudioplayer.swf?hash=%2%&userid=%1%',
+			'result'       => 'http://embed.trilulilu.ro/audio/%1%/%2%.swf?username=%1%&hash=%2%',
 		),
 		
 		'220.ro'           => array(
@@ -159,7 +159,7 @@ final class XVE_Config {
 		'trilulilu.ro'     => array(
 			'match'        => '^\/([a-zA-Z0-9]{3,15})\/([0-9a-f]{14})',
 			'capture'      => 2,
-			'result'       => 'http://embed.trilulilu.ro/player/eimageplayer.swf?hash=%2%&userid=%1%',
+			'result'       => 'http://embed.trilulilu.ro/jpg/%1%/%2%',
 		),
 	);
 	
@@ -193,30 +193,35 @@ final class XVE_Config {
 	
 	private $default_config = array(
 		
-		'video'          => array(
-			'width'      => '448',
-			'height'     => '386',
+		'video'              => array(
+			'width'          => '448',
+			'height'         => '386',
 		),
 		
-		'audio'          => array(
-			'width'      => '448',
-			'height'     => '46',
+		'audio'              => array(
+			'width'          => '448',
+			'height'         => '46',
 		),
 		
-		'image'          => array(
-			'width'      => '448',
-			'height'     => '386',
+		'image'              => array(
+			'width'          => '448',
+			'height'         => '386',
 		),
 		
-		'swf'            => array(
-			'width'      => '448',
-			'height'     => '386',
+		'swf'                => array(
+			'width'          => '448',
+			'height'         => '386',
 		),
 		
-		'flv'            => array(
-			'width'      => '448',
-			'height'     => '386',
-			'player'     => 'flowplayer',
+		'flv'                => array(
+			'width'          => '448',
+			'height'         => '386',
+			'player'         => 'flowplayer',
+		),
+		
+		'audio.trilulilu.ro' => array(
+			'width'          => '448',
+			'height'         => '80',
 		),
 		
 	);
