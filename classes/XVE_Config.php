@@ -6,7 +6,7 @@
  */
 final class XVE_Config {
 	
-	private $version = '1.0.1';
+	private $version = '1.0.2';
 	private $option  = 'XVE_Various_Embed';
 	private $domain  = 'xve';
 	
@@ -25,13 +25,13 @@ final class XVE_Config {
 		'youtube.com'      => array(
 			'match'        => 'v=([a-zA-Z0-9\_\-]{11})',
 			'capture'      => 1,
-			'result'       => 'http://www.youtube.com/v/%1%?fs=1&hd=1',
+			'result'       => 'http://www.youtube.com/v/%1%?fs=1&hd=1&version=3&modestbranding=1',
 		),
 		
 		'youtu.be'         => array(
 			'match'        => '^\/([a-zA-Z0-9\_\-]{11})',
 			'capture'      => 1,
-			'result'       => 'http://www.youtube.com/v/%1%?fs=1&hd=1',
+			'result'       => 'http://www.youtube.com/v/%1%?fs=1&hd=1&version=3&modestbranding=1',
 		),
 		
 		'metacafe.com'     => array(
