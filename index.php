@@ -36,4 +36,3 @@ else // probably you shouldn't be here ...
 {
 	exit(255);
 }
-
