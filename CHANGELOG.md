@@ -6,6 +6,9 @@
 
 ## Changelog
 
+### v1.0.3
+ * ! Adds support for blip.tv embedding.
+
 ### v1.0.2
 
  * ! Enables the YouTube modest branding support. From this version, the YouTube embeds won't carry the YouTube logo anymore. As suggested by @pauneugen.
