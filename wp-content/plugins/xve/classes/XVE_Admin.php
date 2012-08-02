@@ -80,10 +80,23 @@ final class XVE_Admin {
 			$player_short_names[] = $player;
 		}
 		
+		$services = array();
+		foreach ($this->config->types as $type)
+		{
+			$domains = array();
+			foreach ($this->config->{$type} as $domain => $stuff)
+			{
+				$domains[] = $domain;
+			}
+			$services[$type] = $domains;
+		}
+		
 		return XVE_View::factory(
 			'help',
 			array(
-				'types'              => $this->config->all_types,
+				'types'              => $this->config->types,
+				'services'           => $services,
+				'all_types'          => $this->config->all_types,
 				'player_names'       => $player_names,
 				'player_short_names' => $player_short_names,
 			)
