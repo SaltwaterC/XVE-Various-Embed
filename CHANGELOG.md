@@ -6,6 +6,10 @@
 
 ## Changelog
 
+### v1.0.2
+
+ * ! Enables the YouTube modest branding support. From this version, the YouTube embeds won't carry the YouTube logo anymore. As suggested by @pauneugen.
+
 ### v1.0.1
 
  * % Fixes the Trilulilu audio + image embedding. The service changed the embedding mode, breaking the backward compatibility with some of the new additions. Since one can't be sure that it works or not, the new syntax is now used by the plug-in. Thanks to @pauneugen for reporting.
