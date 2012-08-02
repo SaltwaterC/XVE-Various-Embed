@@ -6,7 +6,7 @@
  */
 final class XVE_Config {
 	
-	private $version = '1.0.2';
+	private $version = '1.0.3';
 	private $option  = 'XVE_Various_Embed';
 	private $domain  = 'xve';
 	
@@ -138,6 +138,12 @@ final class XVE_Config {
 				'capture'  => 1,
 				'result'   => 'http://www.gametrailers.com/remote_wrap.php?umid=%1%',
 			),
+		),
+		
+		'blip.tv'          => array (
+			'match'        => '-(\d+)$',
+			'capture'      => 1,
+			'result'       => 'http://a.blip.tv/scripts/flash/stratos.swf#file=http%3A%2F%2Fblip.tv%2Frss%2Fflash%2F%1%',
 		),
 	);
 	
