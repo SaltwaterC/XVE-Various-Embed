@@ -54,7 +54,7 @@
 				<input type="text" id="<?php echo $type ?>_width" onclick="xve.save_text(this.id)" onfocus="xve.save_text(this.id)" value="<?php echo $config[$type]['width'] ?>" />
 			</td>
 			<td>
-				<?php _e_xve('Width') ?><?php printf(__xve(' (pixels) used for all %s content. Override for each specific domain or with embeding tag attributes.'), $type) ?>
+				<?php _e_xve('Width') ?> <?php printf(__xve('(pixels) used for all %s content. Override for each specific domain or with embeding tag attributes.'), $type) ?>
 			</td>
 		</tr>
 		<tr>
@@ -63,7 +63,7 @@
 				<input type="text" id="<?php echo $type ?>_height" onclick="xve.save_text(this.id)" onfocus="xve.save_text(this.id)" value="<?php echo $config[$type]['height'] ?>" />
 			</td>
 			<td>
-				<?php _e_xve('Height') ?><?php printf(__xve(' (pixels) used for all %s content. Override for each specific domain or with embeding tag attributes.'), $type) ?>
+				<?php _e_xve('Height') ?> <?php printf(__xve('(pixels) used for all %s content. Override for each specific domain or with embeding tag attributes.'), $type) ?>
 			</td>
 		</tr>
 		<?php if ($type == 'flv') : ?>
