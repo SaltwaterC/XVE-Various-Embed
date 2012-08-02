@@ -6,7 +6,7 @@
  */
 final class XVE_Config {
 	
-	private $version = '1.0 RC2';
+	private $version = '1.0';
 	private $option  = 'XVE_Various_Embed';
 	private $domain  = 'xve';
 	
