@@ -6,6 +6,11 @@
 
 ## Changelog
 
+### v1.0.1
+
+ * % Fixes the Trilulilu audio + image embedding. The service changed the embedding mode, breaking the backward compatibility with some of the new additions. Since one can't be sure that it works or not, the new syntax is now used by the plug-in. Thanks to @pauneugen for reporting.
+ * . Added support for the new Trilulilu video embedding syntax as consequence to the above bug fix.
+
 ### v1.0
 
  * . Plug-in rewrite from scratch. Shares *some* of the concepts from the v0.3 branch of XHTML Video Embed, none of the code. Unlike the previous monolithic version, this plug-in is a collection of individual components, much easier to maintain. Adopted the OOP approach. Dropped support for legacy PHP versions as this version of XVE requires specifically PHP 5.2.0+.
