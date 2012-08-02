@@ -2,8 +2,8 @@
 Contributors: SaltwaterC
 Tags: xhtml, embed, flash, video, audio, image, swf, flv, flv player, jw player, flowplayer, youtube, metacafe, dailymotion, revver, spike, vimeo, livestream, capped.tv, trilulilu.ro, 220.ro, collegehumor, myvideo.de, snotr, gametrailers, blip.tv
 Requires at least: 3.0
-Tested up to: 3.2.1
-Stable tag: 1.0.3
+Tested up to: 3.4.1
+Stable tag: 1.0.4
 
 XVE (XVE Various Embed) is a simple yet powerful way to add media content to your WordPress blog.
 
@@ -31,6 +31,7 @@ For the FLV (MP4) embedding, there are three provided players: Flowplayer, FLV P
 
 == Changelog ==
 
+- 1.0.4 - updates the Flow Player version to 3.2.12. Updates the JW Player version to 3.2.12. This is a security update since JW Player 5.9 is vulnerable. Enabled the embedding filter for post excerpts.
 - 1.0.3 - adds support for blip.tv embedding
 - 1.0.2 - adds support for YouTube modest branding (aka the player without the YouTube logo)
 - 1.0.1 - fixes the Trilulilu embeds as the service changed the syntax without maintaining full backward compatibility
