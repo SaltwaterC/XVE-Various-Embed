@@ -3,7 +3,7 @@
 Plugin Name: XVE Various Embed
 Plugin URI: https://github.com/SaltwaterC/XVE-Various-Embed
 Description: XVE is a plug-in which embeds various content into your WordPress powered website. Check <a href="options-general.php?page=XVE_Admin.php">Settings &raquo; XVE</a> for configuration.
-Version: 1.0.3
+Version: 1.0.4
 Author: SaltwaterC
 Author URI: http://www.saltwaterc.eu/
 License: GPL v3.0
@@ -23,6 +23,7 @@ if((function_exists('add_filter')) AND (function_exists('add_action')))
 	 * (tag, callback, priority)
 	 */
 	add_filter('the_content', array('XVE_Embed', 'filter'), 1);
+	add_filter('the_excerpt', array('XVE_Embed', 'filter'), 1);
 	/**
 	 * Plug in the Admin Panel
 	 */

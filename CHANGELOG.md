@@ -6,6 +6,11 @@
 
 ## Changelog
 
+### v1.0.4
+ * % Updates the JW Player to version 5.10.2295. This is a security update due to an [XSS vulnerability in JW Player 5.9](http://packetstormsecurity.org/files/113332/jwplayer-spoofxss.txt).
+ * % Updates the Flow Player to version 3.2.12.
+ * ! Added the embedding support for post excerpts [#3](https://github.com/SaltwaterC/XVE-Various-Embed/issues/3).
+
 ### v1.0.3
  * ! Adds support for blip.tv embedding.
 
