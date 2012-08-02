@@ -78,6 +78,9 @@ class XVE_URL_Toolkit {
 	 * @assert ('http://www.gametrailers.com/player/39088.html', 'video') == array('domain' => 'gametrailers.com', 'url' => 'http://media.mtvnservices.com/mgid:moses:video:gametrailers.com:39088')
 	 * @assert ('http://www.gametrailers.com/user-movie/e3-2008-livewire-the-conduit/245725', 'video') == array('domain' => 'gametrailers.com', 'url' => 'http://www.gametrailers.com/remote_wrap.php?umid=245725')
 	 * @assert ('http://www.gametrailers.com/player/usermovies/245725.html', 'video') == array('domain' => 'gametrailers.com', 'url' => 'http://www.gametrailers.com/remote_wrap.php?umid=245725')
+	 * 
+	 * // blip.tv //
+	 * @assert ('http://blip.tv/djangocon/secrets-of-postgresql-performance-5572403', 'video') == array('domain' => 'blip.tv', 'url' => 'http://a.blip.tv/scripts/flash/stratos.swf#file=http%3A%2F%2Fblip.tv%2Frss%2Fflash%2F5572403')
 	 */
 	public static function convert_from_url($url, $type)
 	{
