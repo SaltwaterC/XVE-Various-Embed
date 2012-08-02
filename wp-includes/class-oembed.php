@@ -165,8 +165,8 @@ class WP_oEmbed {
 	function fetch( $provider, $url, $args = '' ) {
 		$args = wp_parse_args( $args, wp_embed_defaults() );
 
-		$provider = add_query_arg( 'maxwidth', $args['width'], $provider );
-		$provider = add_query_arg( 'maxheight', $args['height'], $provider );
+		$provider = add_query_arg( 'maxwidth', (int) $args['width'], $provider );
+		$provider = add_query_arg( 'maxheight', (int) $args['height'], $provider );
 		$provider = add_query_arg( 'url', urlencode($url), $provider );
 
 		foreach( array( 'json', 'xml' ) as $format ) {
@@ -242,7 +242,7 @@ class WP_oEmbed {
 					return false;
 
 				$title = ( !empty($data->title) ) ? $data->title : '';
-				$return = '<img src="' . esc_url( $data->url ) . '" alt="' . esc_attr($title) . '" width="' . esc_attr($data->width) . '" height="' . esc_attr($data->height) . '" />';
+				$return = '<a href="' . esc_url( $url ) . '"><img src="' . esc_url( $data->url ) . '" alt="' . esc_attr($title) . '" width="' . esc_attr($data->width) . '" height="' . esc_attr($data->height) . '" /></a>';
 				break;
 
 			case 'video':
