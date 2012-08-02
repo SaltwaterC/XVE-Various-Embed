@@ -3,7 +3,7 @@ Contributors: SaltwaterC
 Tags: xhtml, embed, flash, video, audio, image, swf, flv, flv player, jw player, flowplayer, youtube, metacafe, dailymotion, revver, spike, vimeo, livestream, capped.tv, trilulilu.ro, 220.ro, collegehumor, myvideo.de, snotr, gametrailers
 Requires at least: 3.0
 Tested up to: 3.1.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 XVE (XVE Various Embed) is a simple yet powerful way to add media content to your WordPress blog.
 
