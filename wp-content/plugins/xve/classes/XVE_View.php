@@ -1,7 +1,7 @@
 <?php if (defined('IN_XVE') !== TRUE) exit(255);
 /**
  * @author SaltwaterC
- * @link http://projects.saltwaterc.eu/xve-various-embed
+ * @link https://github.com/SaltwaterC/XVE-Various-Embed
  * @license GPL v3.0
  */
 class XVE_View {
