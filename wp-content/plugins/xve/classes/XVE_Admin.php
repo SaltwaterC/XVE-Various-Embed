@@ -27,7 +27,7 @@ final class XVE_Admin {
 	
 	public static function panel()
 	{
-		add_options_page(
+		$hook = add_options_page(
 			'XVE Dashboard',
 			'XVE',
 			10,
@@ -37,26 +37,8 @@ final class XVE_Admin {
 				'dashboard',
 			)
 		);
-	}
-	
-	public function help()
-	{
-		$player_names = array();
-		$player_short_names = array();
-		foreach ($this->config->players as $player => $meta)
-		{
-			$player_names[] = $meta['name'];
-			$player_short_names[] = $player;
-		}
 		
-		echo XVE_View::factory(
-			'help',
-			array(
-				'types'              => $this->config->all_types,
-				'player_names'       => $player_names,
-				'player_short_names' => $player_short_names,
-			)
-		);
+		add_contextual_help($hook, self::instance()->help());
 	}
 	
 	public function dashboard()
@@ -84,6 +66,26 @@ final class XVE_Admin {
 				'version'   => $this->config->version,
 				'types'     => $this->config->all_types,
 				'specifics' => $specifics,
+			)
+		);
+	}
+	
+	public function help()
+	{
+		$player_names = array();
+		$player_short_names = array();
+		foreach ($this->config->players as $player => $meta)
+		{
+			$player_names[] = $meta['name'];
+			$player_short_names[] = $player;
+		}
+		
+		return XVE_View::factory(
+			'help',
+			array(
+				'types'              => $this->config->all_types,
+				'player_names'       => $player_names,
+				'player_short_names' => $player_short_names,
 			)
 		);
 	}
