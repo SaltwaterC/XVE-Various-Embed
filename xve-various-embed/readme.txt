@@ -13,6 +13,8 @@ XVE (XVE Various Embed) is a simple yet powerful way to add media content to you
 
 The plug-in is self documented, so there's the point where you may want to start. The help is integrated into the WordPress help system. If you're looking for it, it's into the above menu, the 'Help' item. For some of you, this isn't so obvious as the Help system is kinda new.
 
+New features and support requests are honored better if you open a ticket on GitHub where this plug-in is actually hosted: https://github.com/SaltwaterC/XVE-Various-Embed
+
 Supported video services: youtube.com (youtu.be URLs as well), metacafe.com, dailymotion.com, revver.com, spike.com, vimeo.com, livestream.com, capped.tv, trilulilu.ro, 220.ro, collegehumor.com, myvideo.de, snotr.com, gametrailers.com, blip.tv
 
 Supported audio services: trilulilu.ro, 220.ro
