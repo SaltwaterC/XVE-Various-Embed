@@ -41,11 +41,13 @@ class XVE_Embed {
 			preg_match_all('/\[('.$types_expression.'|youtube|metacafe|trilu-video|trilu-audio|trilu-image|trilu-imagine|dailymotion|revver|spike|vimeo|jumpcut|capped|gametrailers|collegehumor|myvideo|snotr)(.*?)?\](.*?)\[\/(?:'.$types_expression.'|youtube|metacafe|trilu-video|trilu-audio|trilu-image|trilu-imagine|dailymotion|revver|spike|vimeo|jumpcut|capped|gametrailers|collegehumor|myvideo|snotr)\]/', $content, $matches);
 			list ($all, $types, $attribs, $urls) = $matches;
 			
-			if (($size = sizeof($matches)) === 4)
+			if (sizeof($matches) === 4)
 			{
+				$size = sizeof($matches[0]);
+				
 				for ($i = 0; $i < $size; $i++)
 				{
-					if ($types[$i] != 'video' AND $types[$i] != 'audio' AND $types[$i] != 'image' AND $types[$i] != 'swf' AND $types[$i] != 'flv')
+					if ( ! in_array($types[$i], $config->all_types))
 					{
 						// fix the type for the new system
 						$types[$i] = self::$map[$types[$i]];
