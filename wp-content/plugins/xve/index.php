@@ -13,6 +13,10 @@ require dirname(__FILE__).DIRECTORY_SEPARATOR.'classes'.DIRECTORY_SEPARATOR.'boo
 if((function_exists('add_filter')) AND (function_exists('add_action')))
 {
 	/**
+	 * Hook the translation support
+	 */
+	load_plugin_textdomain(XVE_Config::instance()->domain, FALSE, dirname(plugin_basename(__FILE__)).'/translate/');
+	/**
 	 * A high priority filter as in production other filters proved to
 	 * corrupt its input
 	 * 

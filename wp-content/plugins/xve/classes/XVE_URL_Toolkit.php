@@ -104,7 +104,8 @@ class XVE_URL_Toolkit {
 		$parsed = parse_url($url);
 		if ( ! isset($parsed['host']))
 		{
-			throw new Exception(__xve('Error: Invalid domain specification into the URL.'));
+			$exception = __xve('Error:').' '. __xve('invalid domain specification into the URL.');
+			throw new Exception($exception);
 		}
 		
 		if (isset($parsed['query']) AND strlen($parsed['query']) > 0)
@@ -144,17 +145,17 @@ class XVE_URL_Toolkit {
 	public static function convert_from_path($domain, $path, $type)
 	{
 		$type = strtolower($type);
-		$invalid_url = __xve('Error: invalid embed URL.');
+		$invalid_url = __xve('Error:').' '.__xve('invalid embed URL.');
 		$config = XVE_Config::instance();
 		
 		if ( ! isset ($config->$type))
 		{
-			throw new Exception(sprintf(__xve('Error: invalid type %s.'), $type));
+			throw new Exception(__xve('Error:').' '.sprintf(__xve('invalid type %s.'), XVE_View::filter($type)));
 		}
 		 
 		if ( ! isset($config->{$type}[$domain]))
 		{
-			throw new Exception(sprintf(__xve('Error: invalid domain %s for the type %s.'), $domain, $type));
+			throw new Exception(__xve('Error:').' '.sprintf(__xve('invalid domain %s for the type %s.'), XVE_View::filter($domain), XVE_View::filter($type)));
 		}
 		
 		$expressions = $config->{$type}[$domain];
@@ -219,7 +220,7 @@ class XVE_URL_Toolkit {
 			if (isset($match[1]))
 				return strtolower($match[1]);
 		}
-		throw new Exception(__xve('Error: Invalid domain specification into the URL.'));
+		throw new Exception(__xve('Error:').' '.__xve('Invalid domain specification into the URL.'));
 	}
 	
 } // End XVE_URL_Toolkit

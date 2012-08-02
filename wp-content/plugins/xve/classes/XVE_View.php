@@ -30,7 +30,7 @@ class XVE_View {
 		$view = dirname(__FILE__).DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.$this->view.'.php';
 		if ( ! is_file($view))
 		{
-			throw new Exception(__xve('Error: invalid view.'));
+			throw new Exception(__xve('Error:').' '.__xve('invalid view.'));
 		}
 		require $view;
 		
@@ -47,6 +47,11 @@ class XVE_View {
 		{
 			return $e->getMessage();
 		}
+	}
+	
+	public static function filter($text)
+	{
+		return htmlentities($text, ENT_QUOTES, 'UTF-8');
 	}
 	
 } // End XVE_View

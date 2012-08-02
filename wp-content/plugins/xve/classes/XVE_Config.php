@@ -6,7 +6,7 @@
  */
 final class XVE_Config {
 	
-	private $version = '1.0 RC1';
+	private $version = '1.0 RC2';
 	private $option  = 'XVE_Various_Embed';
 	private $domain  = 'xve';
 	
@@ -255,7 +255,7 @@ final class XVE_Config {
 	{
 		if ( ! isset ($this->{$property}))
 		{
-			throw new Exception(sprintf(__xve('Error: undefined configuration entry: %s.'), htmlentities($property, ENT_QUOTES)));
+			throw new Exception(__xve('Error:').' '.sprintf(__xve('undefined configuration entry %s.'), XVE_View::filter($property)));
 		}
 		return $this->{$property};
 	}

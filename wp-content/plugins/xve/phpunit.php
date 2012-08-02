@@ -12,7 +12,7 @@ function __autoload_xve($class)
 	}
 	else
 	{
-		echo sprintf(_("Fatal: Class %s not found."), htmlentities($class, ENT_QUOTES));
+		echo sprintf("Fatal: Class %s not found.", htmlentities($class, ENT_QUOTES, 'UTF-8'));
 		exit(255);
 	}
 }
