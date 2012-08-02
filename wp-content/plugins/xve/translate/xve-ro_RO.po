@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: XVE Video Embed\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-28 14:07+0200\n"
+"PO-Revision-Date: 2011-05-28 14:07+0200\n"
+"Last-Translator: Stefan Rusu <saltwaterc@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __xve;_e_xve\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../phpunit.php:15
+#, php-format
+msgid "Fatal: Class %s not found."
+msgstr "Eroare gravă: Clasa %s nu a fost găsită."
+
+#: ../classes/XVE_Config.php:258
+#, php-format
+msgid "Error: undefined configuration entry: %s."
+msgstr "Eroare: cheia de configurare %s nu este definită."
+
+#: ../classes/XVE_Embed.php:166
+msgid "If you can see this, then you might need a Flash Player upgrade or you need to install Flash Player if it's missing. Get <a href=\"http://get.adobe.com/flashplayer/\">Flash Player</a> from Adobe. This error may appear if the URL path to the embedded object is broken or you have connectivity issue to the embedded object. <a href=\"https://github.com/SaltwaterC/XVE-Various-Embed\">Powered BY XVE Various Embed</a>."
+msgstr "Dacă vezi acest text, atunci poate ai nevoie să instalezi Flash Player sau o actualizare la Flash Player.<a href=\"http://get.adobe.com/flashplayer/\">Flash Player</a> se poate downloada de la Adobe. Această eroare mai poate apărea dacă URL-ul către obiectul embedded este greșită sau în caz de erori de conectivitate. <a href=\"https://github.com/SaltwaterC/XVE-Various-Embed\">Oferit de către XVE Various Embed</a>."
+
+#: ../classes/XVE_URL_Toolkit.php:107
+#: ../classes/XVE_URL_Toolkit.php:222
+msgid "Error: Invalid domain specification into the URL."
+msgstr "Eroare: Domeniu invalid specificat în URL."
+
+#: ../classes/XVE_URL_Toolkit.php:147
+msgid "Error: invalid embed URL."
+msgstr "Eroare: URL de embed invalid."
+
+#: ../classes/XVE_URL_Toolkit.php:152
+#, php-format
+msgid "Error: invalid type %s."
+msgstr "Eroare: tip invalid %s."
+
+#: ../classes/XVE_URL_Toolkit.php:157
+#, php-format
+msgid "Error: invalid domain %s for the type %s."
+msgstr "Eroare: domeniu invalid %s pentru tipul %s."
+
+#: ../classes/XVE_View.php:33
+msgid "Error: invalid view."
+msgstr "Eroare: view invalid."
+
+#: ../classes/views/dashboard.php:21
+msgid "Dashboard"
+msgstr "Panou de configurare"
+
+#: ../classes/views/dashboard.php:23
+msgid "General Options"
+msgstr "Opțiuni Generale"
+
+#: ../classes/views/dashboard.php:27
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: ../classes/views/dashboard.php:43
+#: ../classes/views/specific.php:9
+msgid "Enabled"
+msgstr "Activat"
+
+#: ../classes/views/dashboard.php:45
+msgid "yes / no"
+msgstr "da / nu"
+
+#: ../classes/views/dashboard.php:48
+#, php-format
+msgid "Enables the %s for all supported domains."
+msgstr "Activează %s pentru toate domeniile suportate."
+
+#: ../classes/views/dashboard.php:52
+msgid "Global Width"
+msgstr "Lățime Generală"
+
+#: ../classes/views/dashboard.php:57
+msgid "Width"
+msgstr "Lățime"
+
+#: ../classes/views/dashboard.php:57
+#: ../classes/views/dashboard.php:66
+#, php-format
+msgid " (pixels) used for all %s content. Override for each specific domain or with embeding tag attributes."
+msgstr " (pixeli) utilizați pentru toate %s. Suprascrie pentru fiecare domeniu specific sau direct din atributele etichetei de embed."
+
+#: ../classes/views/dashboard.php:61
+msgid "Global Height"
+msgstr "Înălțime Globală"
+
+#: ../classes/views/dashboard.php:66
+msgid "Height"
+msgstr "Înălțime"
+
+#: ../classes/views/dashboard.php:71
+msgid "Media Player"
+msgstr "Player Media"
+
+#: ../classes/views/dashboard.php:73
+msgid "Player / Licence"
+msgstr "Player / Licență"
+
+#: ../classes/views/dashboard.php:90
+msgid "Pick a Media Player for FLV embedding."
+msgstr "Alege un Player Media pentru FLV embedding."
+
+#: ../classes/views/specific.php:3
+#, php-format
+msgid "%s Specific Options"
+msgstr "%s Opțiuni Specifice"
+
+#: ../classes/views/specific.php:8
+msgid "Domain"
+msgstr "Domeniu"
+
+#: ../classes/views/specific.php:10
+msgid "Specific Width"
+msgstr "Lățime Specifică"
+
+#: ../classes/views/specific.php:11
+msgid "Specific Height"
+msgstr "Înălțime specifică"
+
+#: ../classes/views/xve.js.php:3
+msgid "You may want to activate JavaScript if you want this admin UI to actually do something."
+msgstr "O să vrei să activezi JavaScript dacă vrei ca această interfață de configurare să facă ceva."
+
