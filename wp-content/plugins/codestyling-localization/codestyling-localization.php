@@ -3,7 +3,7 @@
 Plugin Name: CodeStyling Localization
 Plugin URI: http://www.code-styling.de/english/development/wordpress-plugin-codestyling-localization-en
 Description: Now you can freely manage, edit and modify your WordPress language translation files (*.po / *.mo) as usual. You won't need any additional editor have been installed. Also supports WPMU plugins, if WPMU versions has been detected.
-Version: 1.99.11
+Version: 1.99.15
 Author: Heiko Rabe
 Author URI: http://www.code-styling.de/english/
 Text Domain: codestyling-localization
@@ -85,9 +85,9 @@ if (function_exists('add_action')) {
 		version_compare(phpversion(), '5.2.1', '<') //IDNA class requires PHP 5.2.1 or higher
 	) {
 		if (function_exists("admin_url")) {
-			define('CSP_PO_ADMIN_URL', rtrim(admin_url(), '/'));
+			define('CSP_PO_ADMIN_URL', rtrim(strtolower(admin_url()), '/'));
 		}else{
-			define('CSP_PO_ADMIN_URL', rtrim(get_option('siteurl').'/wp-admin/', '/'));
+			define('CSP_PO_ADMIN_URL', rtrim(strtolower(get_option('siteurl')).'/wp-admin/', '/'));
 		}
 	}
 	else{
@@ -95,9 +95,9 @@ if (function_exists('add_action')) {
 			require_once('includes/idna_convert.class.php');
 		$idn = new idna_convert();
 		if (function_exists("admin_url")) {
-			define('CSP_PO_ADMIN_URL', $idn->decode(rtrim(admin_url(), '/')), 'utf8');
+			define('CSP_PO_ADMIN_URL', $idn->decode(rtrim( strtolower(admin_url()) , '/'), 'utf8'));
 		}else{
-			define('CSP_PO_ADMIN_URL', $idn->decode(rtrim(get_option('siteurl').'/wp-admin/', '/'),'utf8'));
+			define('CSP_PO_ADMIN_URL', $idn->decode(rtrim(strtolower(get_option('siteurl')).'/wp-admin/', '/'),'utf8'));
 		}
 	}
 	
@@ -590,12 +590,12 @@ function csp_po_get_plugin_mu_capabilities($plug, $values){
 
 	$const_list = array();
 	$content = file_get_contents($file);
-	if (preg_match("/[^_^!]load_(|plugin_)textdomain\s*\(\s*(\'|\"|)([\w\d\-_]+|[A-Z\d\-_]+)(\'|\"|)\s*(,|\))\s*([^;]+)\)/", $content, $hits)) {
+	if (preg_match("/[^_^!]load_(|plugin_|muplugin_)textdomain\s*\(\s*(\'|\"|)([\w\d\-_]+|[A-Z\d\-_]+)(\'|\"|)\s*(,|\))\s*([^;]+)\)/", $content, $hits)) {
 		$data['textdomain'] = array('identifier' => $hits[3], 'is_const' => empty($hits[2]) );
 		$data['gettext_ready'] = true;
 		$data['php-path-string'] = $hits[6];
 	}
-	else if(preg_match("/[^_^!]load_(|plugin_)textdomain\s*\(/", $content, $hits)) {
+	else if(preg_match("/[^_^!]load_(|plugin_|muplugin_)textdomain\s*\(/", $content, $hits)) {
 		//ATTENTION: it is gettext ready but we don't realy know the textdomain name! Assume it's equal to plugin's name.
 		//TODO: let's think about it in future to find a better solution.
 		$data['textdomain'] = array('identifier' => substr(basename($plug),0,-4), 'is_const' => false );
@@ -692,6 +692,12 @@ function csp_po_get_theme_capabilities($theme, $values, $active) {
 		) {
 			if (isset($hits[1]) && $hits[1] != 'child_theme_' && $hits[1] != 'theme_') 	$data['dev-hints'] = __("<strong>Loading Issue: </strong>Author is using <em>load_textdomain</em> instead of <em>load_theme_textdomain</em> or <em>load_child_theme_textdomain</em> function. This may break behavior of WordPress, because some filters and actions won't be executed anymore. Please contact the Author about that.",CSP_PO_TEXTDOMAIN);
 		
+			//fallback for variable names used to load textdomain, assumes theme name
+			if(isset($hits[3]) && strpos($hits[3], '$') !== false) {
+				unset($hits[3]);
+				if (isset($data['dev-hints'])) $data['dev-hints'] .= "<br/><br/>";
+				$data['dev-hints'] = __("<strong>Textdomain Naming Issue: </strong>Author uses a variable to load the textdomain. It will be assumed to be equal to theme name now.",CSP_PO_TEXTDOMAIN);
+			}			
 			//make it short
 			$data['gettext_ready'] = true;
 			if ($data['gettext_ready']) {
@@ -784,6 +790,14 @@ function csp_po_get_theme_capabilities($theme, $values, $active) {
 				}
 			}
 		}
+		
+		//fallback for constants defined by variables! assume the theme name instead
+		if(strpos($data['textdomain']['identifier'], '$') !== false) {
+			$data['textdomain']['identifier'] = $values['Template'];
+			if (isset($data['dev-hints'])) $data['dev-hints'] .= "<br/><br/>";
+			$data['dev-hints'] = __("<strong>Textdomain Naming Issue: </strong>Author uses a variable to define the textdomain constant. It will be assumed to be equal to theme name now.",CSP_PO_TEXTDOMAIN);
+		}			
+
 	}		
 	//check now known issues for themes
 	if(isset($data['textdomain']['identifier']) && $data['textdomain']['identifier'] == 'woothemes') {
@@ -1767,19 +1781,25 @@ if (function_exists('add_action')) {
 function csp_po_init() {
 	//currently not used, subject of later extension
 	$low_mem_mode = (bool)get_option('codestyling-localization.low-memory', false);
-	define('CSL_LOW_MEMORY', $low_mem_mode);
+	define('CSL_LOW_MEMORY', $low_mem_mode);	
 }
-
 
 function csp_load_po_edit_admin_page(){
 	wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script('prototype');
 	wp_enqueue_script('scriptaculous-effects');
-
 	if (function_exists('wp_enqueue_style')) {
 		wp_enqueue_style( 'thickbox' );
 		wp_enqueue_style('codestyling-localization', CSP_PO_BASE_URL.'/codestyling-localization.php?css=default&amp;dir='.((function_exists('is_rtl') && is_rtl()) ? 'rtl' : 'ltr'));
 	}
+	//prevent WP E-Commerce scripts from removing protoype at my pages!
+	$wpec = false;
+	$wpec |= remove_action( 'admin_head', 'wpsc_admin_include_css_and_js' );
+	$wpec |= remove_action( 'admin_head', 'wpsc_admin_include_css_and_js_refac' );
+	$wpec |= remove_action( 'admin_enqueue_scripts', 'wpsc_admin_include_css_and_js_refac' );
+	
+	define('CSL_WPEC_PATCH', $wpec);
+	
 }
 
 function csp_po_admin_head() {
@@ -1811,6 +1831,11 @@ function csp_po_main_page() {
 	<input id= "enable_low_memory_mode" type="checkbox" name="enable_low_memory_mode" value="1" <?php if (CSL_LOW_MEMORY) echo 'checked="checked"'; ?>> <label for="enable_low_memory_mode"><?php _e('enable low memory mode', CSP_PO_TEXTDOMAIN); ?></label> <img id="enable_low_memory_mode_indicator" style="display:none;" alt="" src="<?php echo CSP_PO_BASE_URL."/images/loading-small.gif"?>" /><br />
 	<small><?php _e('If your Installation is running under low remaining memory conditions, you will face the memory limit error during scan process or opening catalog content. If you hitting your limit, you can enable this special mode. This will try to perform the actions in a slightly different way but that will lead to a considerably slower response times but nevertheless gives no warranty, that it will solve your memory related problems at all cases.', CSP_PO_TEXTDOMAIN); ?></small>
 </p>
+<?php if (CSL_WPEC_PATCH) : ?>
+<p>
+	<small><strong><?php _e('Attention:', CSP_PO_TEXTDOMAIN); ?></strong>&nbsp;<?php _e("You have a running version of WP e-Commerce and it has been programmed to deactivate the javascript library prototype.js at each WordPress backend page! I did a work arround that, in case of issues read my article: <a href=\"http://www.code-styling.de/english/wp-e-commerce-breaks-intentionally-other-plugins-or-themes\">WP e-Commerce breaks intentionally other Plugins or Themes</a>", CSP_PO_TEXTDOMAIN); ?></small>
+</p>
+<?php endif; ?>
 <ul class="subsubsub">
 <li>
 	<a<?php if(!isset($_GET['type'])) echo " class=\"current\""; ?> href="<?php echo $csp_wp_main_page ?>.php?page=codestyling-localization/codestyling-localization.php"><?php  _e('All Translations', CSP_PO_TEXTDOMAIN); ?>
@@ -1964,7 +1989,7 @@ function csp_po_main_page() {
 					echo '<a class="clickable pot-folder" onclick="csp_create_pot_indicator(this,\''.$dir.'/'.$data['base_file'].'xx_XX.pot\');">'. str_replace(str_replace("\\","/",WP_PLUGIN_DIR), '', $dir)."</a><br/>";
 				} 
 			?>
-		<?php } elseif($data['name'] == 'bbPress' && $data['is_US_Version']) { ?>	
+		<?php } elseif($data['name'] == 'bbPress' && isset($data['is_US_Version']) && $data['is_US_Version']) { ?>	
 			<div style="color:#f00;"><?php _e("The original bbPress component doesn't contain a language directory.",CSP_PO_TEXTDOMAIN); ?></div>
 			<br/>
 			<div><a class="clickable button" onclick="csp_create_languange_path(this, '<?php echo $data['base_path']."my-languages"; ?>');"><?php _e('try to create the bbPress language directory',CSP_PO_TEXTDOMAIN); ?></a></div>
