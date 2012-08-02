@@ -13,6 +13,16 @@ XVE (XVE Various Embed) is a simple yet powerful way to add media content to you
 
 The plug-in is self documented, so there's the point where you may want to start. The help is integrated into the WordPress help system. If you're looking for it, it's into the above menu, the 'Help' item. For some of you, this isn't so obvious as the Help system is kinda new.
 
+Supported video services: youtube.com (youtu.be URLs as well), metacafe.com, dailymotion.com, revver.com, spike.com, vimeo.com, livestream.com, capped.tv, trilulilu.ro, 220.ro, collegehumor.com, myvideo.de, snotr.com, gametrailers.com
+
+Supported audio services: trilulilu.ro, 220.ro
+
+Supported image services: trilulilu.ro
+
+It also supports generic SWF / FLV (MP4) embedding.
+
+For the FLV (MP4) embedding, there are three provided players: Flowplayer, FLV Player, and JW Player. You may change them on the fly without the need to change the embed code.
+
 == Installation ==
 
 1. Add the xve-various-embed directory to /wp-content/plugins.
