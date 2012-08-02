@@ -407,6 +407,7 @@ class csp_l10n_parser {
 				if (in_array(1, $bad_argc)) return null; //error, this can't be a function
 				$res['msgid'] = $args[0]."\00".$args[1];
 				$res['P'] = true;
+				$res['LTD'] = $this->textdomain; //noop's translated later mostly with correct texdomain
 				break;
 			case '_n_noop':
 				//see deprecated __ngettext_noop
@@ -416,6 +417,7 @@ class csp_l10n_parser {
 				if (in_array(1, $bad_argc)) return null; //error, this can't be a function
 				$res['msgid'] = $args[0]."\00".$args[1];
 				$res['P'] = true;
+				$res['LTD'] = $this->textdomain; //noop's translated later mostly with correct texdomain
 				break;
 			case '_nx_noop':
 				//see "_n_noop" but  but additional context,
@@ -427,8 +429,8 @@ class csp_l10n_parser {
 				if (in_array(2, $bad_argc)) return null; //error, this can't be a function
 				$res['msgid'] = $args[2]."\04".$args[0]."\00".$args[1];
 				$res['P'] = true;
-				break;	
-				
+				$res['LTD'] = $this->textdomain; //noop's translated later mostly with correct texdomain
+				break;				
 			case 'load_textdomain':
 				$res = array('func' => $func, 'textdomain' => '', 'rel_path' => false, 'path' => false);
 				if (isset($args[0])) $res['textdomain'] = $args[0];
