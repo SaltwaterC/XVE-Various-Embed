@@ -1,7 +1,7 @@
 <?php if (defined('IN_XVE') !== TRUE) exit(255);
 /**
  * @author SaltwaterC
- * @link http://projects.saltwaterc.eu/xve-various-embed
+ * @link https://github.com/SaltwaterC/XVE-Various-Embed
  * @license GPL v3.0
  */
 class XVE_Embed {
@@ -163,7 +163,7 @@ class XVE_Embed {
 			'width'   => $parsed_attrib['width'],
 			'height'  => $parsed_attrib['height'],
 			'url'     => $conversion['url'],
-			'noflash' => __xve('If you can see this, then you might need a Flash Player upgrade or you need to install Flash Player if it\'s missing. Get <a href="http://get.adobe.com/flashplayer/">Flash Player</a> from Adobe. This error may appear if the URL path to the embedded object is broken or you have connectivity issue to the embedded object. <a href="http://projects.saltwaterc.eu/xve-various-embed">Powered BY XVE Various Embed</a>.'),
+			'noflash' => __xve('If you can see this, then you might need a Flash Player upgrade or you need to install Flash Player if it\'s missing. Get <a href="http://get.adobe.com/flashplayer/">Flash Player</a> from Adobe. This error may appear if the URL path to the embedded object is broken or you have connectivity issue to the embedded object. <a href="https://github.com/SaltwaterC/XVE-Various-Embed">Powered BY XVE Various Embed</a>.'),
 		);
 		
 		if ( ! is_feed())
