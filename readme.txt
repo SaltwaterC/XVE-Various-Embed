@@ -4,7 +4,7 @@ Tags: xhtml, embed, flash, video, audio, image, swf, flv, flv player, jw player,
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 1.0.4
-License: GPL v3
+License: GPL v3.0
 
 XVE (XVE Various Embed) is a simple yet powerful way to add media content to your WordPress blog.
 
